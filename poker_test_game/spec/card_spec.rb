@@ -1,7 +1,16 @@
 # RSpec file for the playing cards.
 require 'card'
 
-RSpec.describe 'a playing card' do
+describe Card do
+  def card(params = {})
+    defaults = {
+      suit: :hearts,
+      rank: 7,
+    }
+
+    Card.new(**defaults.merge(params))
+  end
+
   it 'has a suit' do
     raise unless Card.new(suit: :spades, rank: 4).suit == :spades
   end
